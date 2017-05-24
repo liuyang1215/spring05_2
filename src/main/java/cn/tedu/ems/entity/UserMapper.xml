@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.ems.dao.UserDAO">
+	<!-- id:要求唯一
+		 parameterType:要插入的实体类的完整的名字 -->
+	
+	<select id="findByUsername" parameterType="string" resultType="cn.tedu.ems.entity.User">
+		SELECT * FROM user_lyy WHERE username = #{username}
+	</select>
+	<!-- SELECT id,username,password pwd FROM user_ly WHERE username = #{username} -->	
+
+	<insert id="save" parameterType="cn.tedu.ems.dao.UserDAO">
+		INSERT INTO user_lyy VALUES(null,#{username},#{pwd},null,null)
+	</insert>
+</mapper>
+	

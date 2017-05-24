@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.ems.dao.EmployDAO">
+	
+	<!-- id:要求唯一
+		 parameterType:要插入的实体类的完整的名字 -->
+	
+	<insert id="save" parameterType="cn.tedu.ems.entity.Employee">
+		INSERT INTO emps_lyy VALUES(null,#{name},#{salary},#{age})
+	</insert>
+	
+	<!-- resultType:返回的结果类型 -->
+	<select id="findAll" resultType="cn.tedu.ems.entity.Employee">
+		SELECT * FROM emps_lyy
+	</select>
+
+	<select id="findById" parameterType="int" resultType="cn.tedu.ems.entity.Employee">
+		SELECT * FROM emps_lyy WHERE id=#{id1}
+		<!-- id可以是任何值 -->
+	</select>
+	
+	<update id="update" parameterType="cn.tedu.ems.entity.Employee">
+		UPDATE emps_lyy SET name = #{name},salary = #{salary}, age = #{age} WHERE id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM emps_lyy WHERE id = #{id1}
+	</delete>
+	
+	<!-- map是java.util.Map的简写形式
+		string 是java.lang.String的简写形式 -->
+	<select id="findById2" parameterType="int" resultType="map">
+		SELECT * FROM emps_lyy WHERE id = #{id1}
+	</select>	
+</mapper>
+
